@@ -20,19 +20,16 @@ Peak Tracer can be used with the following command line options:
 # Parameters
 
 ```shell
-
+  -i string
+        The path to the input audio file (required)
+  -o string
+        The path to the output JSON file (required)
   -after float
         The number of seconds after each peak to include (default 1)
   -before float
         The number of seconds before each peak to include (default 1)
   -concat string
         The path to the output file for concatenation
-  -help
-        Print the usage of the command
-  -i string
-        The path to the input audio file (required)
-  -o string
-        The path to the output JSON file (required)
   -samples int
         The number of samples per peak (default 48000)
   -target int
