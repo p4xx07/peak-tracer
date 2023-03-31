@@ -27,7 +27,7 @@ func main() {
 		return
 	}
 
-	args := fmt.Sprintf("-y -i %s -vn -af asetnsamples=%d,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=log.txt -f null -", *flags.Input, flags.Samples)
+	args := fmt.Sprintf("-y -i %s -vn -af asetnsamples=%d,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=log.txt -f null -", flags.Input, flags.Samples)
 	split := strings.Split(args, " ")
 	command := exec.Command("ffmpeg", split...)
 	command.Args = slice_helper.RemoveEmptyEntries(command.Args)
@@ -103,7 +103,7 @@ func main() {
 		return
 	}
 
-	file, err := os.Create(*flags.Output)
+	file, err := os.Create(flags.Output)
 	if err != nil {
 		fmt.Println("Error creating file:", err)
 		return
@@ -117,7 +117,7 @@ func main() {
 		return
 	}
 
-	if flags.Concat == nil {
+	if flags.Concat == "" {
 		return
 	}
 	concat(flags, ranges)
@@ -126,7 +126,7 @@ func main() {
 func concat(flags types.Flags, ranges []types.Range) {
 	t := time.Now()
 	defer func() { fmt.Sprintf("Took %s", time.Since(t).String()) }()
-	extension := path.Ext(*flags.Input)
+	extension := path.Ext(flags.Input)
 	file, err := os.Create("concat.txt")
 	if err != nil {
 		panic(err)
@@ -137,7 +137,7 @@ func concat(flags types.Flags, ranges []types.Range) {
 	fmt.Println("creating concat file")
 	for i, p := range ranges {
 		output := fmt.Sprintf("%d%s", i, extension)
-		args := fmt.Sprintf("-y -ss %f -t %f -i %s %s", p.Min, p.Max-p.Min, *flags.Input, output)
+		args := fmt.Sprintf("-y -ss %f -t %f -i %s %s", p.Min, p.Max-p.Min, flags.Input, output)
 		split := strings.Split(args, " ")
 		split = slice_helper.RemoveEmptyEntries(split)
 		command := exec.Command("ffmpeg", split...)
@@ -150,7 +150,7 @@ func concat(flags types.Flags, ranges []types.Range) {
 	}
 
 	fmt.Println("concatenating")
-	command := exec.Command("ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "concat.txt", *flags.Concat)
+	command := exec.Command("ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", "concat.txt", flags.Concat)
 	_, err = command.Output()
 	if err != nil {
 		panic(err)
