@@ -1,4 +1,4 @@
-module peak-tracer
+module github.com/Paxx-RnD/peak-tracer
 
 go 1.18
 
