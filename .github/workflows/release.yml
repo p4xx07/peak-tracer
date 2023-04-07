@@ -15,7 +15,7 @@ jobs:
           GOARCH: "386"
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-linux-amd64:
@@ -30,7 +30,7 @@ jobs:
           GOARCH: amd64
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-linux-arm:
@@ -45,7 +45,7 @@ jobs:
           GOARCH: "arm"
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-linux-arm64:
@@ -60,7 +60,7 @@ jobs:
           GOARCH: arm64
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-darwin-amd64:
@@ -75,7 +75,7 @@ jobs:
           GOARCH: amd64
           GOOS: darwin
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-windows-386:
@@ -90,7 +90,7 @@ jobs:
           GOARCH: "386"
           GOOS: windows
           EXTRA_FILES: "LICENSE"
-          CMD_PATH: "-o peak-tracer cmd/main.go"
+          CMD_PATH: "cmd/main.go"
           BUILD_ARGS: "-o peak-tracer"
           PROJECT_NAME: "peak-tracer"
   release-windows-amd64:
