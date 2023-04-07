@@ -9,13 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "386"
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-linux-amd64:
     name: release linux/amd64
@@ -23,13 +22,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-linux-arm:
     name: release linux/386
@@ -37,13 +35,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "arm"
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-linux-arm64:
     name: release linux/amd64
@@ -51,13 +48,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: arm64
           GOOS: linux
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-darwin-amd64:
     name: release darwin/amd64
@@ -65,13 +61,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
           GOOS: darwin
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-windows-386:
     name: release windows/386
@@ -79,13 +74,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "386"
           GOOS: windows
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
   release-windows-amd64:
     name: release windows/amd64
@@ -93,11 +87,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.1.10
+        uses: Allan-Nava/go-release.action@v1.1.11
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
           GOOS: windows
           EXTRA_FILES: "LICENSE"
-          PROJECT_NAME: "peak-tracer"
           GOBUILD_PATH: "cmd/main.go"
