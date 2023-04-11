@@ -27,16 +27,20 @@ func main() {
 		return
 	}
 
+	fmt.Println("reading flags")
 	args := fmt.Sprintf("-y -i %s -vn -af asetnsamples=%d,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=log.txt -f null -", flags.Input, flags.Samples)
 	split := strings.Split(args, " ")
 	command := exec.Command("ffmpeg", split...)
 	command.Args = slice_helper.RemoveEmptyEntries(command.Args)
-	_, err = command.Output()
+
+	fmt.Println("execute ffmepg command flags")
+	res, err := command.Output()
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Printf("issue -> %s %v", string(res), err.Error())
 		return
 	}
 
+	fmt.Println("reading log file")
 	text, _ := os.ReadFile("log.txt")
 	defer os.Remove("log.txt")
 
@@ -60,6 +64,7 @@ func main() {
 		peak = types.Peak{}
 	}
 
+	fmt.Println("sorting peaks")
 	peaksByRMS := types.PeaksByRMS(peaks)
 	sort.Sort(peaksByRMS)
 
@@ -89,6 +94,7 @@ func main() {
 
 	ranges = ranges[:i]
 
+	fmt.Println("slicing out of target ranges")
 	sort.Slice(ranges, func(i, j int) bool {
 		return ranges[i].Min < ranges[j].Max
 	})
@@ -97,6 +103,7 @@ func main() {
 		return p.Min + (flags.Before)
 	})
 
+	fmt.Println("creating the peaks struct")
 	json, err := json.Marshal(peaksStruct)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -110,8 +117,11 @@ func main() {
 	}
 	defer file.Close()
 
+	fmt.Printf("writing peaks file to %s", file.Name())
 	s := string(json)
 	_, err = file.WriteString(s)
+
+	fmt.Printf("completed")
 	if err != nil {
 		fmt.Println("Error writing to file:", err)
 		return
@@ -120,6 +130,7 @@ func main() {
 	if flags.Concat == "" {
 		return
 	}
+	fmt.Printf("Joining the videos")
 	concat(flags, ranges)
 }
 
