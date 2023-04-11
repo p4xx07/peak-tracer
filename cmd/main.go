@@ -29,7 +29,8 @@ func main() {
 	}
 
 	fmt.Println("reading flags")
-	args := fmt.Sprintf("-y -i %s -af asetnsamples=%d,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=log.txt -f null -", flags.Input, flags.Samples)
+	logfile := path.Join(path.Dir(flags.Input), "log.txt")
+	args := fmt.Sprintf("-y -i %s -af asetnsamples=%d,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level:file=%s -f null -", flags.Input, flags.Samples, logfile)
 	split := strings.Split(args, " ")
 	command := exec.Command("ffmpeg", split...)
 	command.Args = slice_helper.RemoveEmptyEntries(command.Args)
@@ -43,8 +44,8 @@ func main() {
 	}
 
 	fmt.Println("reading log file")
-	text, _ := os.ReadFile("log.txt")
-	defer os.Remove("log.txt")
+	text, _ := os.ReadFile(logfile)
+	defer os.Remove(logfile)
 
 	split = strings.Split(string(text), "\n")
 
