@@ -36,6 +36,7 @@ func main() {
 	fmt.Println("execute ffmepg command flags")
 	res, err := command.Output()
 	if err != nil {
+		fmt.Println("[args] -> " + args)
 		fmt.Printf("issue -> %s %v", string(res), err.Error())
 		return
 	}
