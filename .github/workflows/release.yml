@@ -5,11 +5,12 @@ name: Build Release
 jobs:
   release-linux-386:
     name: release linux/386
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "386"
@@ -20,11 +21,12 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-linux-amd64:
     name: release linux/amd64
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
@@ -35,11 +37,12 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-linux-arm:
     name: release linux/386
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "arm"
@@ -50,6 +53,7 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-linux-arm64:
     name: release linux/amd64
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -65,11 +69,12 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-darwin-amd64:
     name: release darwin/amd64
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
@@ -80,11 +85,12 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-windows-386:
     name: release windows/386
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: "386"
@@ -95,11 +101,12 @@ jobs:
           PROJECT_NAME: "peak-tracer"
   release-windows-amd64:
     name: release windows/amd64
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: compile and release
-        uses: Allan-Nava/go-release.action@v1.4.7
+        uses: Allan-Nava/go-release.action@v1.4.8
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOARCH: amd64
