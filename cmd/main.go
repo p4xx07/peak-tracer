@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/Paxx-RnD/go-helper/helpers/math_helper/mathint"
 	"github.com/Paxx-RnD/go-helper/helpers/slice_helper"
 	"github.com/Paxx-RnD/peak-tracer/types"
 	"os"
@@ -82,15 +83,17 @@ func main() {
 
 	var max float64
 	i := 0
-	for i = range ranges {
+	for range ranges {
 		max += flags.After + flags.Before
 		if max > float64(flags.Target) {
 			break
 		}
+		i++
 	}
 
+	fmt.Printf("ranges len: %d, i: %d\n", len(ranges), i)
 	if i > len(ranges)-1 {
-		i = len(ranges) - 1
+		i = mathint.Max(0, len(ranges)-1)
 	}
 
 	ranges = ranges[:i]
